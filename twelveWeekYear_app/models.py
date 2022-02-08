@@ -3,10 +3,14 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
+
+status_choices = [['in progress', 'In Progress'],
+                  ['not started', 'Not Started'],
+                  ['completed', 'Completed']
+]
 class TwelveWeek(models.Model):
     title = models.CharField(max_length=150)
     start_date = models.DateField()
-    end_date = models.DateField()
 
     def __str__(self):
         return self.title
@@ -21,18 +25,14 @@ class Goal(models.Model):
     TwelveWeek = models.ManyToManyField(TwelveWeek, blank = True)
     title = models.CharField(max_length=200)
     # description = models.TextField(max_length=1000)
-    start_date = models.DateField(blank = True, null=True)
-    end_date = models.DateField(blank = True, null=True)
+    due_date = models.DateField(blank = True, null=True)
     tags = models.CharField(choices= tag_choices, max_length=200, null=True, blank = True)
 
     def __str__(self):
         return self.title
 
 class Tactic(models.Model):
-    # status_choices = [['in progress', 'In Progress'],
-    #                   ['not started', 'Not Started'],
-    #                   ['completed', 'Completed']
-    #                   ]
+
     frequency_choices = [['daily', 'Daily'],
                       ['weekly', 'Weekly'],
                       ['once', 'Once']
@@ -43,7 +43,7 @@ class Tactic(models.Model):
     start_date = models.DateField(blank = True, null=True)
     end_date = models.DateField(blank = True, null=True)
     frequency = models.CharField(max_length=50, choices=frequency_choices, default="once", blank = True, null=True)
-    # status = models.CharField(max_length=150, choices=status_choices)
+    status = models.CharField(max_length=150, choices=status_choices, default="not started")
     score = models.IntegerField(validators=[MaxValueValidator(10), MinValueValidator(1)], blank = True, null=True)
 
     def __str__(self):
@@ -59,19 +59,19 @@ class Week(models.Model):
     actions = models.TextField(max_length=1000, verbose_name="Insigths and Actions for next week.", blank = True, null=True)
     start_date = models.DateField(blank = True, null=True)
     end_date = models.DateField(blank = True, null=True)
-    score = models.IntegerField(validators=[MaxValueValidator(10), MinValueValidator(1)], blank = True, null=True)
 
     def __str__(self):
-        return self.title
+        return f"{self.twelve_week} - {self.title}"
 
-class Day(models.Model):
-    twelve_week = models.ForeignKey(TwelveWeek, null=True, on_delete=models.SET_NULL)
-    week = models.ForeignKey(Week, on_delete=models.CASCADE)
+class DailyReflection(models.Model):
+    week = models.ForeignKey(Week, on_delete=models.SET_NULL, null=True)
     date = models.DateField()
-    tactic = models.ManyToManyField(Tactic)
-    reflection = models.TextField(max_length=1000, verbose_name="Reflection on the day!", blank = True, null=True)
-    score = models.IntegerField(validators=[MaxValueValidator(10), MinValueValidator(1)], blank = True, null=True)
+    tactic = models.ManyToManyField(Tactic, blank=True)
+    reflection = models.TextField(max_length=1000, verbose_name="Reflection on the day!", blank=True, null=True)
+    score = models.FloatField(validators=[MaxValueValidator(10), MinValueValidator(1)], blank=True, null=True)
 
     def __str__(self):
-        return f"{self.twelve_week}_{self.week}_{self.date}"
+        return f"{self.date}: {self.score}"
+
+
 

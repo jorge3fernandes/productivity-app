@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="goal-form-content">
+    <div class="add-goal card">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{goal_form.as_p}}
+            <div class="action-buttons">
+                    <input class="button-md" type="submit" value="submit"></input>
+                
+                <div class="button-md" >
+                    <a href="{% url 'index' %}">HOME</a>
+                </div>
+               
+            </div>
+        </form>
+    </div>
+    
+    
+    
+</div>
+
+{% endblock %}
+
+{% block js%}
+
+{% endblock %}

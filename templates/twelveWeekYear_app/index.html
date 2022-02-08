@@ -1,5 +1,85 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-{{test}}
+
+<div class = "main">
+    <div class="page-intro">
+        <h1>12 Week Year</h1>
+        <a href="{% url 'add_session'%}">
+            <button class="button-md">Add Session</button>
+        </a>
+    </div>
+    
+    <div class="plan">
+        <div class="goals card">
+            <div Class="card-title">
+                <h5>GOAL</h5>
+                <div class="addition-buttons">
+                    <a href="{% url 'add_goal'%}">
+                        <button class="button-md">Add Goal</button>
+                    </a>
+                    <a href="{% url 'add_tactic'%}">
+                        <button class="button-md">Add Tactics</button>
+                    </a>
+                </div>
+                
+                
+            </div>
+            {% for goal in goals %}
+            <div class="goal">
+                <p>{{goal.title}}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="this-week card">
+            <div Class="card-title">
+                <h5>THIS WEEK</h5>
+            </div>
+            <div class="tactics">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class = "tactic-title">Tactic</th>
+                            <th>Sunday</th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                            <th>Saturday</th>
+                            <th>Weekly Score</th>
+                        </tr>
+                
+                    </thead>
+                    <tbody>
+                        {% for tactic in tactics %}
+                            <tr>
+                                <td>{{tactic.title}}</td>
+                                <td>100</td>
+                                <td>67</td>
+                                <td>80</td>
+                                <td>98</td>
+                                <td>89</td>
+                                <td>80</td>
+                                <td>70</td>
+                                <td>85</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            
+        </div>
+        <div class="score-card card">
+            
+        </div>
+    </div>
+    
+</div>
+{% endblock %}
+
+{% block js%}
+
 {% endblock %}

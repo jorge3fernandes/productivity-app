@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+}
+
+h1,h2,h3,h4,h5{
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    color: #CDCDCD;
+}
+
+h1{
+    font-size: 36px;
+    line-height: 40px;
+}
+
+h2{
+    font-size: 30px;
+    line-height: 32px;
+}
+
+h3{
+    font-size: 24px;
+    line-height: 24px;
+}
+
+h4{
+    font-size: 20px;
+    line-height: 24px;
+}
+
+h5{
+    font-size: 18px;
+    line-height: 24px;
+}
+p{
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: #CDCDCD;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
+.card{
+    background-color: #161616;
+    margin-left: 14px;
+}
+
+.card-title{
+    display: flex;
+    justify-content: space-between;
+    margin: 14px;
+}
+
+.plan{
+    display: flex;
+}
+
+.goals{
+    width: 449px;
+    height: 815px;
+}
+
+.goal{
+    border-radius: 5%;
+    margin: 14px;
+    border: 2px solid #161616;
+    box-sizing: border-box;
+    border-radius: 33px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+
+}
+.goal:hover{
+    cursor: pointer;
+    border: 2px solid #010101;
+    box-sizing: border-box;
+    border-radius: 33px;
+}
+.tactics{
+    margin: 14px;
+    width: auto;
+}
+
+th {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 9px;
+    line-height: 20px;
+    /* identical to box height, or 222% */
+    letter-spacing: 0.21em;
+    text-transform: uppercase;
+    border-bottom: 0.05px solid #CDCDCD;
+
+    /* Gray / Light */
+    color: #CDCDCD;
+}
+td{
+    text-align: center;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: #CDCDCD;
+}
+
+.tactic-title{
+    width: 500px;
+}
+
+.button-md{
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 20px;
+    width: 102px;
+    height: 20px;
+    background: #FFFFFF;
+    border-radius: 30px;
+    text-align: center;
+    letter-spacing: 0.21em;
+    text-transform: uppercase;
+    color: #010101;
+    cursor: pointer;
+}
+
+.goal-form-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-goal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    height: 500px;
+    width: 700px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.action-buttons{
+    display: flex;
+    gap: 14px;
+
+}
+
+.page-intro{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 14px;
+}

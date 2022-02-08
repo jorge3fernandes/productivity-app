@@ -7,8 +7,9 @@ from .models import *
 class WeekAdmin(admin.StackedInline):
     model = Week
 
-class DayAdmin(admin.StackedInline):
-    model = Day
+
+class DailyReflectionAdmin(admin.StackedInline):
+    model = DailyReflection
     
 # Registering Models
 @admin.register(TwelveWeek)
@@ -17,9 +18,10 @@ class TwelveWeekAdmin(admin.ModelAdmin):
 
 @admin.register(Week)
 class WeekAdmin(admin.ModelAdmin):
-    inlines = [DayAdmin]
+    inlines = [DailyReflectionAdmin]
 
-@admin.register(Day)
+
+@admin.register(DailyReflection)
 
 @admin.register(Goal)
 class GoalAdmin(admin.ModelAdmin):
